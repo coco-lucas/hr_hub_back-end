@@ -1,7 +1,6 @@
 package com.lucas.hr_hub.backend.Payroll;
 
 import com.lucas.hr_hub.backend.Employee.Employee;
-import com.lucas.hr_hub.backend.TimeBank.TimeBank;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,16 +15,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "payroll")
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter
-@Builder
+@Builder @ToString
 public class Payroll {
-
-    TimeBank attendanceLog;
-    
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
        
@@ -47,5 +44,16 @@ public class Payroll {
     private Double grossSalary;
     
     @Positive @NotNull
-    private final Double netSalary = (grossSalary - (taxDeductions - otherDeductions) + (bonuses + overtimePay));
+    private Double netSalary;
+
+    public Double calculateGrossSalary(){
+        return employee.getBaseSalary() + bonuses + overtimePay;
+    }
+    public Double calculateNetSalary(){
+        return grossSalary - taxDeductions - otherDeductions;
+    }
+    // public Double calculateTaxDeductions(){
+    //     //Tudo sendo calculado considerando o sistema brasileiro
+        
+    // }
 }

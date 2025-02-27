@@ -1,64 +1,52 @@
 package com.lucas.hr_hub.backend.Employee;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import com.lucas.hr_hub.backend.Enums.DocumentTypeEnum;
+import com.lucas.hr_hub.backend.Department.Department;
+import com.lucas.hr_hub.backend.Employee.Enums.PositionEnum;
+import com.lucas.hr_hub.backend.Employee.Enums.StatusEnum;
 import com.lucas.hr_hub.backend.Payroll.Payroll;
 import com.lucas.hr_hub.backend.TimeBank.TimeBank;
+import com.lucas.hr_hub.backend.User.User;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "employee")
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter
-@Builder
+@Builder @ToString
 public class Employee {
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String firstName;
-    
-    @NotBlank
-    private String LastName;
-    
-    @NotBlank
-    private String position;
-    
-    @NotBlank @Email @Column(unique = true)
-    private String email;
+    private User user;
 
-    @NotBlank
-    private String phone;
-    
-    @NotNull
+    private PositionEnum position;
+
+    private Department department;
+
     private LocalDate hireDate;
 
-    @NotNull
+    private StatusEnum status;
+
     private Double baseSalary;
 
-    @NotBlank
-    private DocumentTypeEnum documentType;
-    
-    @NotBlank
-    private String documentNum;
+    private Double baseMonthWorkHours;
 
+    private List<Payroll> payrolls;
     
-    private Payroll payroll;
-    private TimeBank timeBank;
+    private List<TimeBank> timeBanks;
 }

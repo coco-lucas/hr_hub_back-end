@@ -1,6 +1,6 @@
 package com.lucas.hr_hub.backend.TimeBank;
 
-import java.time.LocalDate;
+import java.time.YearMonth;
 
 import com.lucas.hr_hub.backend.Employee.Employee;
 
@@ -16,19 +16,20 @@ import lombok.*;
 @Table(name = "timebank")
 @NoArgsConstructor @AllArgsConstructor
 @Getter @Setter
-@Builder
+@Builder @ToString
 public class TimeBank {
-    
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Employee employee;
 
+    private YearMonth referenceMonth;
+
     private Double workedHours;
     
     private Double overtimeHours;
     
-    private LocalDate periodStart;
-
-    private LocalDate periodEnd;
+    public Double calculateOvertimeHours(){
+        return workedHours > employee.getBaseMonthWorkHours() ? workedHours - employee.getBaseMonthWorkHours() : 0.0;
+    }
 }
