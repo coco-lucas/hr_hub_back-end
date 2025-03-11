@@ -1,7 +1,7 @@
-package com.lucas.hr_hub.backend.User;
+package com.lucas.hr_hub.backend.user;
 
-import com.lucas.hr_hub.backend.Address.Address;
-import com.lucas.hr_hub.backend.Employee.Enums.DocumentTypeEnum;
+import com.lucas.hr_hub.backend.address.domain.Address;
+import com.lucas.hr_hub.backend.user.enums.DocumentTypeEnum;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -20,12 +20,15 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "user")
-@AllArgsConstructor @NoArgsConstructor
-@Getter @Setter
-@Builder 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 @ToString
 public class User {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String firstName;

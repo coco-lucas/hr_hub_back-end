@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.Utils;
+package com.lucas.hr_hub.backend.shared.utils;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -17,7 +17,8 @@ import jakarta.validation.ReportAsSingleViolation;
 /**
  * Validates the Document Num based on the DocumentType chossen.
  * 
- * Created using the jakarta.validation properties, including its CPF & CNPJ validators.
+ * Created using the jakarta.validation properties, including its CPF & CNPJ
+ * validators.
  */
 
 @ReportAsSingleViolation
@@ -26,10 +27,10 @@ import jakarta.validation.ReportAsSingleViolation;
 @Target({ ANNOTATION_TYPE, FIELD, METHOD, PARAMETER })
 @Retention(RUNTIME)
 public @interface ValidDocument {
-    
+
     String message() default "The document number is invalid for chossen the document type";
-    
-    Class<?>[] groups() default{};
-    
+
+    Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }
