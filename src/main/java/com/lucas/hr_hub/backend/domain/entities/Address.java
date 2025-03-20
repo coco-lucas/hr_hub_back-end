@@ -1,6 +1,4 @@
-package com.lucas.hr_hub.backend.address.domain;
-
-import com.lucas.hr_hub.backend.user.User;
+package com.lucas.hr_hub.backend.domain.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -22,18 +20,18 @@ public class Address {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	private int ZIPcode;
+	private String ZIPcode;
 	private int houseNum;
 	private String street;
 	private String city;
 	private String state;
 	private String country;
 
-	public Address(Long id, User user, int zIPcode, int houseNum, String street,
+	public Address(Long id, User user, String ZIPcode, int houseNum, String street,
 			String city, String state, String country) {
 		this.id = id;
 		this.user = user;
-		ZIPcode = zIPcode;
+		this.ZIPcode = ZIPcode;
 		this.houseNum = houseNum;
 		this.street = street;
 		this.city = city;
@@ -61,11 +59,11 @@ public class Address {
 		this.user = user;
 	}
 
-	public int getZIPcode() {
+	public String getZIPcode() {
 		return ZIPcode;
 	}
 
-	public void setZIPcode(int zIPcode) {
+	public void setZIPcode(String zIPcode) {
 		ZIPcode = zIPcode;
 	}
 

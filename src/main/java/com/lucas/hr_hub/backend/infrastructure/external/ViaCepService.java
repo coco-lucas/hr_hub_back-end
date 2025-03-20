@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.address.integration;
+package com.lucas.hr_hub.backend.infrastructure.external;
 
 import java.io.IOException;
 import java.net.URI;
@@ -10,13 +10,15 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.lucas.hr_hub.backend.address.domain.Address;
+import com.lucas.hr_hub.backend.domain.entities.Address;
 
 @Service
-public class ViaCepService {
-	public Address getAddressByCEP(int cep) {
+public class ViaCepService implements ProcessAddressInterface {
+
+	@Override
+	public Address getAddressByCEP(String cep) {
 		HttpClient client = HttpClient.newHttpClient();
-		HttpRequest request = HttpRequest.newBuilder(URI.create("https://viacep.com.br/ws/" + cep + "/json"))
+		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://viacep.com.br/ws/" + cep + "/json"))
 				.build();
 		HttpResponse<String> response;
 
@@ -27,6 +29,7 @@ public class ViaCepService {
 			JsonObject addressJson = JsonParser.parseString(body).getAsJsonObject();
 
 			Address address = new Address();
+			address.setZIPcode(cep);
 			address.setStreet(addressJson.get("logradouro").getAsString());
 			address.setCity(addressJson.get("localidade").getAsString());
 			address.setState(addressJson.get("estado").getAsString());
@@ -37,4 +40,5 @@ public class ViaCepService {
 			return null;
 		}
 	}
+
 }

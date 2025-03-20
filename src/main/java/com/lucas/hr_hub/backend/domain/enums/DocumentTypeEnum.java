@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.user.enums;
+package com.lucas.hr_hub.backend.domain.enums;
 
 public enum DocumentTypeEnum {
     ID,

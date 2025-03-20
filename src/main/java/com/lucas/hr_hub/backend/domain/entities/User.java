@@ -1,7 +1,6 @@
-package com.lucas.hr_hub.backend.user;
+package com.lucas.hr_hub.backend.domain.entities;
 
-import com.lucas.hr_hub.backend.address.domain.Address;
-import com.lucas.hr_hub.backend.user.enums.DocumentTypeEnum;
+import com.lucas.hr_hub.backend.domain.enums.DocumentTypeEnum;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

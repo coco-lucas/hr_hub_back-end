@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.address.service;
+package com.lucas.hr_hub.backend.application.useCases.address;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,24 +8,24 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lucas.hr_hub.backend.address.domain.Address;
-import com.lucas.hr_hub.backend.address.domain.AddressRepository;
-import com.lucas.hr_hub.backend.address.dto.AddressDTO;
-import com.lucas.hr_hub.backend.address.dto.CreateAddressDTO;
-import com.lucas.hr_hub.backend.address.dto.UpdateAddressDTO;
-import com.lucas.hr_hub.backend.address.integration.ViaCepService;
+import com.lucas.hr_hub.backend.domain.entities.Address;
+import com.lucas.hr_hub.backend.infrastructure.external.ProcessAddressInterface;
+import com.lucas.hr_hub.backend.infrastructure.persistence.JpaAddressRepository;
+import com.lucas.hr_hub.backend.interfaceAdapters.dtos.AddressDTO;
+import com.lucas.hr_hub.backend.interfaceAdapters.dtos.CreateAddressDTO;
+import com.lucas.hr_hub.backend.interfaceAdapters.dtos.UpdateAddressDTO;
 
 @Service
 public class AddressService {
 
     @Autowired
-    private AddressRepository repository;
-
-    @Autowired
-    private ViaCepService viaCepService;
+    private JpaAddressRepository repository;
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private ProcessAddressInterface processAddress;
 
     // GET method
     public List<AddressDTO> getAllAddress() {
@@ -48,7 +48,7 @@ public class AddressService {
     }
 
     public Address handleBrazilianAddress(CreateAddressDTO dto) {
-        Address address = viaCepService.getAddressByCEP(dto.getZIPcode());
+        Address address = processAddress.getAddressByCEP(dto.getZIPcode());
         address.setUser(dto.getUser());
         address.setHouseNum(dto.getHouseNum());
         address.setCountry(dto.getCountry());

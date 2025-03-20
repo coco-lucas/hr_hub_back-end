@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.config;
+package com.lucas.hr_hub.backend.infrastructure.security;
 
 import java.util.Arrays;
 
