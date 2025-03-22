@@ -26,6 +26,14 @@ public class Address {
 
 	}
 
+	public void standardizeFormat() {
+		this.ZIPcode = ZIPcode.replaceAll("[^0-9]", "");
+		this.country = country.toUpperCase();
+		this.state = state.toLowerCase();
+		this.city = city.toLowerCase();
+		this.street = street.toLowerCase();
+	}
+
 	public Long getId() {
 		return id;
 	}

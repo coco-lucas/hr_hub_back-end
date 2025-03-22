@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.shared.exceptions;
+package com.lucas.hr_hub.backend.domain.exceptions;
 
 public class NotFoundException extends RuntimeException {
 

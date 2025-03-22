@@ -1,6 +1,6 @@
 package com.lucas.hr_hub.backend.domain.entities;
 
-import com.lucas.hr_hub.backend.domain.enums.DocumentTypeEnum;
+import com.lucas.hr_hub.backend.domain.entities.enums.DocumentTypeEnum;
 
 public class User {
     private Long id;

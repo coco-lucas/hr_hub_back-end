@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.infrastructure.persistence.entities;
+package com.lucas.hr_hub.backend.infra.persistence.entities;
 
 import com.lucas.hr_hub.backend.domain.entities.User;
 

@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.infrastructure.external.processCep;
+package com.lucas.hr_hub.backend.infra.external.processCep;
 
 import com.lucas.hr_hub.backend.domain.entities.Address;
 
