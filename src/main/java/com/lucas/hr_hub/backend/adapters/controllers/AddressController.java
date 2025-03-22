@@ -7,9 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lucas.hr_hub.backend.application.dtos.AddressDTO;
+import com.lucas.hr_hub.backend.application.dtos.CreateAddressDTO;
 import com.lucas.hr_hub.backend.application.useCases.address.AddressService;
-import com.lucas.hr_hub.backend.interfaceAdapters.dtos.AddressDTO;
-import com.lucas.hr_hub.backend.interfaceAdapters.dtos.CreateAddressDTO;
+import com.lucas.hr_hub.backend.application.useCases.address.CreateAddressUseCase;
+import com.lucas.hr_hub.backend.application.useCases.address.GetAllAddressUseCase;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +21,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/address")
 public class AddressController {
 
-    @Autowired
-    private AddressService service;
+    private final CreateAddressUseCase createAddressUseCase;
+    private final GetAllAddressUseCase getAllAddressUseCase;
+
+    public AddressController(
+            CreateAddressUseCase createAddressUseCase,
+            GetAllAddressUseCase getAllAddressUseCase) {
+        this.createAddressUseCase = createAddressUseCase;
+        this.getAllAddressUseCase = getAllAddressUseCase;
+    }
 
     @GetMapping
     public ResponseEntity<List<AddressDTO>> getAllAddress() {

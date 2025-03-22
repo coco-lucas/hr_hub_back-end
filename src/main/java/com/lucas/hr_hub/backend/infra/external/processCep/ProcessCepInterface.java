@@ -1,8 +1,8 @@
-package com.lucas.hr_hub.backend.infrastructure.external;
+package com.lucas.hr_hub.backend.infrastructure.external.processCep;
 
 import com.lucas.hr_hub.backend.domain.entities.Address;
 
-public interface ProcessAddressInterface {
+public interface ProcessCepInterface {
 
     public Address getAddressByCEP(String CEP);
 }

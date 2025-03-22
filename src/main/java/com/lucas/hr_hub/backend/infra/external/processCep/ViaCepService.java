@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.infrastructure.external;
+package com.lucas.hr_hub.backend.infrastructure.external.processCep;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,7 +13,7 @@ import com.google.gson.JsonParser;
 import com.lucas.hr_hub.backend.domain.entities.Address;
 
 @Service
-public class ViaCepService implements ProcessAddressInterface {
+public class ViaCepService implements ProcessCepInterface {
 
 	@Override
 	public Address getAddressByCEP(String cep) {

@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.infrastructure.persistence;
+package com.lucas.hr_hub.backend.infrastructure.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

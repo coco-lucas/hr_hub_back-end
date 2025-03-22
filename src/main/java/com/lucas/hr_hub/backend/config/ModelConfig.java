@@ -4,8 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.lucas.hr_hub.backend.application.dtos.UpdateAddressDTO;
 import com.lucas.hr_hub.backend.domain.entities.Address;
-import com.lucas.hr_hub.backend.interfaceAdapters.dtos.UpdateAddressDTO;
 
 @Configuration
 public class ModelConfig {

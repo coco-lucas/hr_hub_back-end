@@ -1,4 +1,4 @@
-package com.lucas.hr_hub.backend.interfaceAdapters.dtos;
+package com.lucas.hr_hub.backend.application.dtos;
 
 import com.lucas.hr_hub.backend.domain.entities.Address;
 import com.lucas.hr_hub.backend.domain.entities.User;
